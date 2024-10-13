@@ -109,7 +109,7 @@ int insertSortedLL(LinkedList *ll, int item)
 		return -1;
 
 	// next 가 존재하고, next item 이 item 보다 작을 때까지 탐색
-	if (temp->next != NULL && temp->next->item < item)
+	while (temp->next != NULL && temp->next->item < item)
 	{
 		index++;
 		temp = temp->next;

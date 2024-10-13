@@ -13,9 +13,9 @@ Purpose: Implementing the required functions for Question 1 */
 
 typedef struct _listnode
 {
-    int item;               // 데이터 저장하는 공간
-    struct _listnode *next; // 다음 노드를 가리키는 포인터
-} ListNode;                 // You should not change the definition of ListNode
+    int item;
+    struct _listnode *next;
+} ListNode; // You should not change the definition of ListNode
 
 typedef struct _linkedlist
 {
@@ -109,7 +109,7 @@ int insertSortedLL(LinkedList *ll, int item)
         return -1;
 
     // next 가 존재하고, next item 이 item 보다 작을 때까지 탐색
-    if (temp->next != NULL && temp->next->item < item)
+    while (temp->next != NULL && temp->next->item < item)
     {
         index++;
         temp = temp->next;
@@ -151,16 +151,14 @@ void removeAllItems(LinkedList *ll)
 
     while (cur != NULL)
     {
-        tmp = cur->next; // 다음 노드의 위치를 저장
-        free(cur);       // 현재 노드를 해제
-        cur = tmp;       // 다음 노드로 이동
-    } // cur 을 free() 한 이후에 그 노드에 다시 접근하지 않기 때문에 올바르게 동작한다
+        tmp = cur->next;
+        free(cur);
+        cur = tmp;
+    }
     ll->head = NULL;
     ll->size = 0;
 }
 
-// findNode 에서 ListNode * (구조체의 포인터) 인 이유는
-// 노드의 실제 주소를 반환하고 연결 리스트의 구조를 수정해야 하기 때문
 ListNode *findNode(LinkedList *ll, int index)
 {
 

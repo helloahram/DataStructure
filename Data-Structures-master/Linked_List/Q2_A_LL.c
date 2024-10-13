@@ -119,10 +119,6 @@ void alternateMergeLinkedList(LinkedList *ll1, LinkedList *ll2)
 		next1 = cur1->next;
 		next2 = cur2->next;
 
-		// cur1 의 next 가 없으면 더 이상 삽입할 자리가 없으므로 종료
-		if (next1 == NULL)
-			break;
-
 		// 다음 노드로 이어주기, cur1 의 next 에 cur2 을 주고
 		// cur2 의 next 에는 next1 을 준다
 		cur1->next = cur2;
